@@ -1,0 +1,65 @@
+{
+  "quizzes": [
+    {
+      "title": "Famous Landmarks",
+      "questions": [
+        {
+          "question": "What is this landmark?",
+          "image": "eiffel_tower.jpeg",
+          "options": ["Eiffel Tower", "Statue of Liberty", "Big Ben", "Colosseum"],
+          "answer": "Eiffel Tower"
+        },
+        {
+          "question": "Where is this landmark located?",
+          "image": "statue_of_liberty.jpeg",
+          "options": ["Paris", "New York", "London", "Rome"],
+          "answer": "New York"
+        }
+      ]
+    },
+    {
+      "title": "Historical Figures",
+      "questions": [
+        {
+          "question": "Who is this person?",
+          "image": "albert_einstein.jpeg",
+          "options": ["Isaac Newton", "Albert Einstein", "Nikola Tesla", "Thomas Edison"],
+          "answer": "Albert Einstein"
+        }
+      ]
+    },
+    {
+      "title": "World Capitals",
+      "questions": [
+        {
+          "question": "What is the capital of this country?",
+          "image": "tokyo.jpeg",
+          "options": ["Beijing", "Seoul", "Tokyo", "Bangkok"],
+          "answer": "Tokyo"
+        }
+      ]
+    },
+    {
+      "title": "Famous Paintings",
+      "questions": [
+        {
+          "question": "Who painted this artwork?",
+          "image": "mona_lisa.jpeg",
+          "options": ["Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso", "Claude Monet"],
+          "answer": "Leonardo da Vinci"
+        }
+      ]
+    },
+    {
+      "title": "Scientific Discoveries",
+      "questions": [
+        {
+          "question": "What did this scientist discover?",
+          "image": "penicillin.jpeg",
+          "options": ["Electricity", "Penicillin", "Radioactivity", "Theory of Relativity"],
+          "answer": "Penicillin"
+        }
+      ]
+    }
+  ]
+}

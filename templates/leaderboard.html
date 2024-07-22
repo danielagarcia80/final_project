@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Leaderboard - Quiz Application{% endblock %}
+
+{% block content %}
+    <h1 class="my-4">Leaderboard</h1>
+    <ul class="list-group">
+        {% for username, score in scores %}
+            <li class="list-group-item">{{ username }}: {{ score }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Quizzes</a>
+{% endblock %}

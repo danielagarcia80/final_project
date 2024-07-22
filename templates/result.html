@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Result - Quiz Application{% endblock %}
+
+{% block content %}
+    <h1 class="my-4">Quiz Result</h1>
+    <p>Your score: {{ score }}/{{ quiz.questions|length }}</p>
+    <h2>Review Answers:</h2>
+    {% for i in range(quiz.questions|length) %}
+        <div class="mb-4">
+            <img src="{{ url_for('static', filename='images/' + quiz.questions[i].image) }}" width="250" class="img-fluid rounded" alt="Question Image">
+            <p>{{ quiz.questions[i].question }}</p>
+            <p>Your answer: {{ user_answers[i] }}</p>
+            <p>Correct answer: {{ quiz.questions[i].answer }}</p>
+        </div>
+    {% endfor %}
+    <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Quizzes</a>
+{% endblock %}
