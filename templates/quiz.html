@@ -4,19 +4,25 @@
 
 {% block content %}
     <h1 class="my-4">{{ quiz.title }}</h1>
-    <form method="post">
-        {% for question in quiz.questions %}
-            <div class="mb-4">
-                <img src="{{ url_for('static', filename='images/' + question.image) }}" width="250" class="img-fluid rounded" alt="Question Image">
-                <p>{{ question.question }}</p>
-                {% for option in question.options %}
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="answers_{{ loop.index0 }}" value="{{ option }}">
-                        <label class="form-check-label">{{ option }}</label>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
+    <form action="{{ url_for('results') }}" method="post">
+        <input type="hidden" name="title" value="{{ quiz.title }}">
+        {% if quiz.questions %}
+            {% for question in quiz.questions %}
+                <div class="mb-4">
+                    <img src="{{ url_for('static', filename='images/' + question.image) }}" width="250" class="img-fluid rounded" alt="Question Image">
+                    <p>{{ question.question }}</p>
+                    {% for option, is_correct in question.options.items() %}
+                    <label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="question_{{ question.id }}" value="{{ option }}">
+                            {{ option }}
+                        </div>
+                    </label>
+                    <br>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Quizzes</a>

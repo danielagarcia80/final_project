@@ -5,7 +5,7 @@ import json
 
 app = Flask(__name__)
 app.secret_key = 'cst205final'  # Required to use sessions securely
-
+# flask --app quiz_main --debug run
 # Initialize Flask-Bootstrap
 Bootstrap(app)
 
@@ -20,24 +20,36 @@ users = {}
 def index():
     return render_template('index.html', quizzes=quizzes)
 
-@app.route('/quiz/<int:quiz_id>', methods=['GET', 'POST'])
-def quiz(quiz_id):
+@app.route('/quiz/<quiz_title>', methods=['GET'])
+def quiz(quiz_title):
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    quiz = quizzes[quiz_id]
-    if request.method == 'POST':
-        user_answers = [request.form.get(f'answers_{i}') for i in range(len(quiz['questions']))]
-        score = sum(1 for i, q in enumerate(quiz['questions']) if user_answers[i] == q['answer'])
-        username = session['username']
-        if username in users:
-            users[username]['scores'].append(score)
-            return render_template('result.html', quiz=quiz, score=score, user_answers=user_answers)
-        else:
-            flash('User not found. Please log in again.')
-            return redirect(url_for('login'))
+    selected_quiz = next((quiz for quiz in quizzes if quiz['title'] == quiz_title), None)
+    return render_template('quiz.html', quiz=selected_quiz)
+
+@app.route('/results', methods=['POST'])
+def results():
+    quiz_title = request.form.get('title')
+    selected_quiz = next((quiz for quiz in quizzes if quiz['title'] == quiz_title), None)
     
-    return render_template('quiz.html', quiz=quiz)
+    total_questions = len(selected_quiz['questions'])
+    correct_answers = 0
+    
+    for question in selected_quiz['questions']:
+        selected_answer = request.form.get(f'question_{question["id"]}')
+        if selected_answer and question['options'][selected_answer]:
+            correct_answers += 1
+    
+    username = session['username']
+    if username in users:
+        users[username]['scores'].append(correct_answers)
+    else:
+        flash('User not found. Please log in again.')
+        return redirect(url_for('login'))
+    
+    return render_template('result.html', total_questions=total_questions, correct_answers=correct_answers)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
