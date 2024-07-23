@@ -7,7 +7,7 @@
     <h2>Select a Quiz</h2>
     <ul class="list-group">
         {% for quiz in quizzes %}
-            <li class="list-group-item"><a href="{{ url_for('quiz', quiz_id=loop.index0) }}">{{ quiz.title }}</a></li>
+            <li class="list-group-item"><a href="{{ url_for('quiz', quiz_title=quiz.title) }}">{{ quiz.title }}</a></li>
         {% endfor %}
     </ul>
     <a href="{{ url_for('leaderboard') }}" class="btn btn-info mt-4">View Leaderboard</a>
