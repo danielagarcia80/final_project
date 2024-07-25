@@ -95,6 +95,3 @@ def leaderboard():
             unique_scores[username] = max(data['scores'])
     sorted_scores = sorted(unique_scores.items(), key=lambda x: x[1], reverse=True)[:5]
     return render_template('leaderboard.html', scores=sorted_scores)
-
-if __name__ == '__main__':
-    app.run(debug=True)
