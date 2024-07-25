@@ -16,10 +16,12 @@ with open('quizzes.json') as f:
 # User data storage in memory
 users = {}
 
+# Main route and main page where all quizzes are displayed
 @app.route('/')
 def index():
     return render_template('index.html', quizzes=quizzes)
 
+# Go to the specific quiz chosen by user
 @app.route('/quiz/<quiz_title>', methods=['GET'])
 def quiz(quiz_title):
     if 'username' not in session:
@@ -28,6 +30,7 @@ def quiz(quiz_title):
     selected_quiz = next((quiz for quiz in quizzes if quiz['title'] == quiz_title), None)
     return render_template('quiz.html', quiz=selected_quiz)
 
+# Show the results of the score once the user completed a quiz 
 @app.route('/results', methods=['POST'])
 def results():
     quiz_title = request.form.get('title')
@@ -36,6 +39,7 @@ def results():
     total_questions = len(selected_quiz['questions'])
     correct_answers = 0
     
+    # Add up the score depending how many questions were correct
     for question in selected_quiz['questions']:
         selected_answer = request.form.get(f'question_{question["id"]}')
         if selected_answer and question['options'][selected_answer]:
@@ -50,7 +54,7 @@ def results():
     
     return render_template('result.html', total_questions=total_questions, correct_answers=correct_answers)
 
-
+# User login that checks for incorrect username or passwords
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -62,11 +66,13 @@ def login():
         flash('Invalid username or password')
     return render_template('login.html')
 
+# Log out user by removing from session
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+# Registers a user if they don't have a log in already
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -80,6 +86,7 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html')
 
+# Display the leaderboard with top 5 users based on their highest scores
 @app.route('/leaderboard')
 def leaderboard():
     unique_scores = {}

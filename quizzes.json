@@ -60,6 +60,76 @@
           "options": { "Electricity": false, "Penicillin": true, "Radioactivity": false, "Theory of Relativity": false }
         }
       ]
+    },
+    {
+      "title": "Car Questionaire",
+      "questions": [
+        {
+          "id": 6000,
+          "question": "What part of the car is this?",
+          "image": "transmission.jpeg",
+          "options": { "Hub Cap": false, "Engine": false, "Transmission": true, "Fuel Injecter": false }
+        },
+        {
+          "id": 6001,
+          "question": "What part of the car is this?",
+          "image": "Pistons.jpeg",
+          "options": { "Hub Cap": false, "Engine": false, "Transmission": false, "Pistons": true }
+        },
+        {
+          "id": 6002,
+          "question": "What is this snail looking thing called?",
+          "image": "Turbo.jpeg",
+          "options": { "Turbo": true, "Supercharger": false, "Cooling Fan": false, "Exhaust": false }
+        },
+        {
+          "id": 6003,
+          "question": "Where is this car from?",
+          "image": "Nissan.jpeg",
+          "options": { "America": false, "Germany": false, "Italy": false, "Japan": true }
+        },
+        {
+          "id": 6004,
+          "question": "What car brand made the first production car to hit 300 miles per hour in 2019?",
+          "image": "Bugatti.jpeg",
+          "options": { "Ferrari": false, "Bugatti": true, "Transmission": false, "Pistons": true }
+        }
+      ]
+    },
+    {
+      "title": "Computer Expertise",
+      "questions": [
+        {
+          "id": 7000,
+          "question": "What part of the computer is this?",
+          "image": "Ramstick.jpeg",
+          "options": { "CPU": false, "Mother Board Parts": false, "Ram Stick": true, "Graphics": false }
+        },
+        {
+          "id": 7001,
+          "question": "What part of the computer is this?",
+          "image": "Powersupply.jpeg",
+          "options": { "CPU cooler": false, "Fan controller": false, "Motherboard": false, "Power Supply": true }
+        },
+        {
+          "id": 7002,
+          "question": "What is this for in a pc?",
+          "image": "Watercooled.jpeg",
+          "options": { "Water Cooling": true, "RGB Lighting": false, "Display": false, "Electricity Balancer": false }
+        },
+        {
+          "id": 7003,
+          "question": "Where is this found?",
+          "image": "Switches.jpeg",
+          "options": { "In the CPU": false, "In the Monitor": false, "In a Computer Mouse": false, "In a keyboard": true }
+        },
+        {
+          "id": 7004,
+          "question": "What Windows was this?",
+          "image": "Windows95.jpeg",
+          "options": { "Windows 3.1": false, "Windows 95": true, "Windows 5": false, "Windows 1998": true }
+        }
+      ]
     }
   ]
 }

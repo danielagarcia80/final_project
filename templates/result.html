@@ -3,7 +3,9 @@
 {% block title %}Quiz Results{% endblock %}
 
 {% block content %}
+    <!-- The result page that shows the calcuated score of the quiz recently taken -->
     <h1 class="my-4">Quiz Results</h1>
     <p>Your Score: {{ correct_answers }}/{{ total_questions}}</p>
+    <!-- Link back to the home page -->
     <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Quizzes</a>
 {% endblock %}

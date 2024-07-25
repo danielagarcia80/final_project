@@ -3,12 +3,15 @@
 {% block title %}Home - Quiz Application{% endblock %}
 
 {% block content %}
+    <!-- Main Page Heading -->
     <h1 class="my-4">Interactive Quiz Application</h1>
     <h2>Select a Quiz</h2>
     <ul class="list-group">
+        <!-- List each quiz as a link to its own quizzes's page -->
         {% for quiz in quizzes %}
             <li class="list-group-item"><a href="{{ url_for('quiz', quiz_title=quiz.title) }}">{{ quiz.title }}</a></li>
         {% endfor %}
     </ul>
+     <!-- Link for Leaderboard -->
     <a href="{{ url_for('leaderboard') }}" class="btn btn-info mt-4">View Leaderboard</a>
 {% endblock %}

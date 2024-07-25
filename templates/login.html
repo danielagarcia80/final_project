@@ -3,7 +3,9 @@
 {% block title %}Login - Quiz Application{% endblock %}
 
 {% block content %}
+    <!-- Title for the Login Page -->
     <h1 class="my-4">Login</h1>
+    <!-- Ask for username and password for login -->
     <form method="post">
         <div class="form-group">
             <label for="username">Username</label>
@@ -15,10 +17,12 @@
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
+    <!-- Display error messages -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="alert alert-danger mt-3">{{ messages[0] }}</div>
         {% endif %}
     {% endwith %}
+    <!-- Register link -->
     <p class="mt-3">Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
 {% endblock %}

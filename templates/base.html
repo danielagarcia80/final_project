@@ -6,11 +6,13 @@
     {{ bootstrap.load_css() }}
 </head>
 <body>
+    <!-- The Navigation bar  -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ url_for('index') }}">QuizApp</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 {% if 'username' in session %}
+                <!-- Display username and logout link if user is logged in -->
                     <li class="nav-item">
                         <a class="nav-link" href="#">Welcome, {{ session['username'] }}</a>
                     </li>
@@ -18,6 +20,7 @@
                         <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
                     </li>
                 {% else %}
+                <!-- Else Display login and register links if user is not logged in before submitting quiz-->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">Login</a>
                     </li>
