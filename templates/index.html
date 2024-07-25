@@ -3,12 +3,119 @@
 {% block title %}Home - Quiz Application{% endblock %}
 
 {% block content %}
-    <h1 class="my-4">Interactive Quiz Application</h1>
+<h1 class="title">Interactive Quiz Application</h1>
+<div class = "card_container">
     <h2>Select a Quiz</h2>
-    <ul class="list-group">
-        {% for quiz in quizzes %}
-            <li class="list-group-item"><a href="{{ url_for('quiz', quiz_title=quiz.title) }}">{{ quiz.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[0]) }}">
+        <div class="card" style="width: 15rem;">
+          <img src="static\images\music.jpg" style="height: 130px;" alt="Card image cap">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><strong>{{ quiz_data[0] }}</strong></h5>
+            </div>
+          </div>
+        </div>
+        </a>
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[1]) }}">
+        <div class="card" style="width: 15rem;">
+            <img src="static\images\sports.jpg" style="height: 130px;" alt="Card image cap">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><strong>{{ quiz_data[1] }}</strong></h5>
+                </div>
+            </div>
+        </div>
+        </a>
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[2]) }}">
+        <div class="card" style="width: 15rem;">
+            <img src="static\images\film.jpg" style="height: 130px;" alt="Card image cap">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{ quiz_data[2] }}</strong></h5>
+                </div>
+            </div>
+        </div>
+        </a>
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[3]) }}">
+            <div class="card" style="width: 15rem;">
+              <img src="static\images\art.jpg" style="height: 130px;" alt="Card image cap">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><strong>{{ quiz_data[3] }}</strong></h5>
+                </div>
+              </div>
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[4]) }}">
+        <div class="card" style="width: 15rem;">
+            <img src="static\images\history.jpg" style="height: 130px;" alt="Card image cap">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><strong>{{ quiz_data[4] }}</strong></h5>
+                </div>
+            </div>
+        </div>
+        </a>
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[5]) }}">
+        <div class="card" style="width: 15rem;">
+            <img src="static\images\society.jpg" style="height: 130px;" alt="Card image cap">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{ quiz_data[5] }}</strong></h5>
+                </div>
+            </div>
+        </div>
+        </a>
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[6]) }}">
+            <div class="card" style="width: 15rem;">
+                <img src="static\images\science.jpg" style="height: 130px;" alt="Card image cap">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ quiz_data[6] }}</strong></h5>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[7]) }}">
+        <div class="card" style="width: 15rem;">
+            <img src="static\images\geography.jpg" style="height: 130px;" alt="Card image cap">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title"><strong>{{ quiz_data[7] }}</strong></h5>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+
+    <div class="row">
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[8]) }}">
+        <div class="card" style="width: 15rem;">
+            <img src="static\images\food.jpg" style="height: 130px;" alt="Card image cap">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{ quiz_data[8] }}</strong></h5>
+                </div>
+            </div>
+        </div>
+        </a>
+        <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[9]) }}">
+            <div class="card" style="width: 15rem;">
+                <img src="static\images\general.jpg" style="height: 130px;" alt="Card image cap">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ quiz_data[9] }}</strong></h5>
+                    </div>
+                </div>
+            </div>
+            </a><br>
+    </div>
     <a href="{{ url_for('leaderboard') }}" class="btn btn-info mt-4">View Leaderboard</a>
+    <a href="{{ url_for('leaderboard') }}" class="btn btn-info mt-4">Get a Random Quiz</a>
+</div>
+
+<br><br>
 {% endblock %}

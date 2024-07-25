@@ -1,65 +1,46 @@
 {
-  "quizzes": [
-    {
-      "title": "Famous Landmarks",
-      "questions": [
-        {
-          "id": 1000,
-          "question": "What is this landmark?",
-          "image": "eiffel_tower.jpeg",
-          "options": { "Eiffel Tower": true, "Statue of Liberty": false, "Big Ben": false, "Colosseum": false }
-        },
-        {
-          "id": 1001,
-          "question": "Where is this landmark located?",
-          "image": "statue_of_liberty.jpeg",
-          "options": { "Paris": false, "New York": true, "London": false, "Rome": false }
-        }
-      ]
-    },
-    {
-      "title": "Historical Figures",
-      "questions": [
-        {
-          "id": 2000,
-          "question": "Who is this person?",
-          "image": "albert_einstein.jpeg",
-          "options": { "Isaac Newton": false, "Albert Einstein": true, "Nikola Tesla": false, "Thomas Edison": false }
-        }
-      ]
-    },
-    {
-      "title": "World Capitals",
-      "questions": [
-        {
-          "id": 3000,
-          "question": "What is the capital of this country?",
-          "image": "tokyo.jpeg",
-          "options": { "Beijing": false, "Seoul": false, "Tokyo": true, "Bangkok": false }
-        }
-      ]
-    },
-    {
-      "title": "Famous Paintings",
-      "questions": [
-        {
-          "id": 4000,
-          "question": "Who painted this artwork?",
-          "image": "mona_lisa.jpeg",
-          "options": { "Vincent van Gogh": false, "Leonardo da Vinci": true, "Pablo Picasso": false, "Claude Monet": false }
-        }
-      ]
-    },
-    {
-      "title": "Scientific Discoveries",
-      "questions": [
-        {
-          "id": 5000,
-          "question": "What did this scientist discover?",
-          "image": "penicillin.jpeg",
-          "options": { "Electricity": false, "Penicillin": true, "Radioactivity": false, "Theory of Relativity": false }
-        }
-      ]
-    }
-  ]
+"quizzes": {
+    "Geography": [
+      {
+        "id": 1000,
+        "question": "What is this landmark?",
+        "image": "eiffel_tower.jpeg",
+        "options": { "Eiffel Tower": true, "Statue of Liberty": false, "Big Ben": false, "Colosseum": false }
+      },
+      {
+        "id": 1001,
+        "question": "Where is this landmark located?",
+        "image": "statue_of_liberty.jpeg",
+        "options": { "Paris": false, "New York": true, "London": false, "Rome": false }
+      },
+      {
+        "id": 3000,
+        "question": "What is the capital of this country?",
+        "image": "tokyo.jpeg",
+        "options": { "Beijing": false, "Seoul": false, "Tokyo": true, "Bangkok": false }
+      }
+    ],
+    "History": [
+      {
+        "id": 2000,
+        "question": "Who is this person?",
+        "image": "albert_einstein.jpeg",
+        "options": { "Isaac Newton": false, "Albert Einstein": true, "Nikola Tesla": false, "Thomas Edison": false }
+      },
+      {
+        "id": 4000,
+        "question": "Who painted this artwork?",
+        "image": "mona_lisa.jpeg",
+        "options": { "Vincent van Gogh": false, "Leonardo da Vinci": true, "Pablo Picasso": false, "Claude Monet": false }
+      }
+    ],
+    "Science": [
+      {
+        "id": 5000,
+        "question": "What did this scientist discover?",
+        "image": "penicillin.jpeg",
+        "options": { "Electricity": false, "Penicillin": true, "Radioactivity": false, "Theory of Relativity": false }
+      }
+    ]
+  }
 }

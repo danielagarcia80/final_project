@@ -1,0 +1,29 @@
+.card_container{
+    width: 100%;
+    margin: auto;
+    border: solid black 2px;
+    padding: 10px;
+}
+.row {
+    margin-top: 15px;
+    padding-left: 15px;
+}
+.card_link{
+    margin: 15px;
+    background-color: #fff;
+    border: 1px solid #1f1d1d;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px black;
+}
+.card_link:hover {
+    box-shadow: 0 8px 16px black;
+}
+.title{
+    background-color: steelblue;
+    padding:20px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color:white;
+    text-shadow: 1px 1px 2px black;
+}
