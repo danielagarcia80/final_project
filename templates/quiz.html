@@ -1,29 +1,39 @@
 {% extends "base.html" %}
 
-{% block title %}{{ quiz.title }} - Quiz Application{% endblock %}
+{% block title %}{{ quiz[0].category }} - Quiz Application{% endblock %}
 
 {% block content %}
-    <h1 class="my-4">{{ quiz.title }}</h1>
     <form action="{{ url_for('results') }}" method="post">
-        <input type="hidden" name="title" value="{{ quiz.title }}">
-        {% if quiz.questions %}
-            {% for question in quiz.questions %}
-                <div class="mb-4">
-                    <img src="{{ url_for('static', filename='images/' + question.image) }}" width="250" class="img-fluid rounded" alt="Question Image">
-                    <p>{{ question.question }}</p>
-                    {% for option, is_correct in question.options.items() %}
-                    <label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="question_{{ question.id }}" value="{{ option }}">
-                            {{ option }}
-                        </div>
-                    </label>
-                    <br>
+        <input type="hidden" name="category" value="{{quiz[0].category}}">
+        <h2>{{ quiz[0].category }} Quiz</h2>
+        {% for question in quiz %}
+            <div class="question_cont">
+                {% if question.image %}
+                    {% if 'http' in question.image %}
+                        <img src="{{ question.image }}" width="250" class="quiz_img" alt="Question Image">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/' + question.image) }}" width="250" class="quiz_img" alt="Question Image">
+                    {% endif %}
+                {% endif %}
+                <input type="hidden" name="question_ids" value="{{ question.id }}">
+                <div class="text_cont">
+                    <p>{{ question.question.text }}</p>
+                    {% set options = [question.correctAnswer] + question.incorrectAnswers %}
+                    {% for option in options %}
+                        <label>
+                            <div class="radio">
+                                <input class="form-check-input" type="radio" name="question_{{ question['id'] }}" value="{{ option }}">
+                                {{ option }}
+                            </div>
+                        </label>
+                        <br>
                     {% endfor %}
                 </div>
-            {% endfor %}
-        {% endif %}
+            </div>
+        {% endfor %}
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Quizzes</a>
+    <br><br>
 {% endblock %}

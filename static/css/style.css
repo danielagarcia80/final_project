@@ -11,7 +11,7 @@
 .card_link{
     margin: 15px;
     background-color: #fff;
-    border: 1px solid #1f1d1d;
+    border: 1px solid black;
     border-radius: 4px;
     box-shadow: 0 2px 4px black;
 }
@@ -26,4 +26,17 @@
     text-align: center;
     color:white;
     text-shadow: 1px 1px 2px black;
+}
+.question_cont{
+    background-color: grey;
+    border: 1px solid black;
+    padding: 45px;
+}
+.text_cont{
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+.quiz_img{
+    border: 1px solid black;
+    border-radius: 10px;
 }

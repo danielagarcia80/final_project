@@ -3,43 +3,61 @@
     "Geography": [
       {
         "id": 1000,
-        "question": "What is this landmark?",
+        "question":{
+          "text": "What is this landmark?"
+        },
         "image": "eiffel_tower.jpeg",
-        "options": { "Eiffel Tower": true, "Statue of Liberty": false, "Big Ben": false, "Colosseum": false }
+        "correctAnswer": "Eiffel Tower" ,
+        "incorrectAnswers": ["Statue of Liberty", "Big Ben", "Colosseum"]
       },
       {
         "id": 1001,
-        "question": "Where is this landmark located?",
+        "question":{
+          "text": "Where is this landmark located?"
+        },
         "image": "statue_of_liberty.jpeg",
-        "options": { "Paris": false, "New York": true, "London": false, "Rome": false }
+        "correctAnswer": "New York" ,
+        "incorrectAnswers": ["Paris", "London", "Rome"]
       },
       {
         "id": 3000,
-        "question": "What is the capital of this country?",
+        "question":{
+          "text": "What is the capital of this country?"
+        },
         "image": "tokyo.jpeg",
-        "options": { "Beijing": false, "Seoul": false, "Tokyo": true, "Bangkok": false }
+        "correctAnswer": "Tokyo" ,
+        "incorrectAnswers": ["Beijing", "Seoul", "Bangkok"]
       }
     ],
     "History": [
       {
         "id": 2000,
-        "question": "Who is this person?",
+        "question":{
+          "text": "Who is this person?"
+        },
         "image": "albert_einstein.jpeg",
-        "options": { "Isaac Newton": false, "Albert Einstein": true, "Nikola Tesla": false, "Thomas Edison": false }
+        "correctAnswer": "Albert Einstein" ,
+        "incorrectAnswers": ["Isaac Newton", "Nikola Tesla", "Thomas Edison"]
       },
       {
         "id": 4000,
-        "question": "Who painted this artwork?",
+        "question":{
+          "text": "Who painted this artwork?"
+        },
         "image": "mona_lisa.jpeg",
-        "options": { "Vincent van Gogh": false, "Leonardo da Vinci": true, "Pablo Picasso": false, "Claude Monet": false }
+        "correctAnswer": "Leonardo da Vinci",
+        "incorrectAnswers": ["Vincent van Gogh", "Pablo Picasso", "Claude Monet"]
       }
     ],
     "Science": [
       {
         "id": 5000,
-        "question": "What did this scientist discover?",
+        "question":{
+          "text": "What did this scientist discover?"
+        },
         "image": "penicillin.jpeg",
-        "options": { "Electricity": false, "Penicillin": true, "Radioactivity": false, "Theory of Relativity": false }
+        "correctAnswer": "Penicillin",
+        "incorrectAnswers": ["Electricity", "Radioactivity", "Theory of Relativity"]
       }
     ]
   }
