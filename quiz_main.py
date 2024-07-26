@@ -6,6 +6,7 @@ import requests, random, json
 app = Flask(__name__)
 app.secret_key = 'cst205final'  # Required to use sessions securely
 # flask --app quiz_main --debug run
+
 # Initialize Flask-Bootstrap
 Bootstrap4(app)
 
@@ -160,7 +161,7 @@ def get_answers(id):
     except:
         print('please try again- No answer')
 
-# Gets images for questions if available. Only 50 requests an hour.
+# Gets images for questions if available. 
 def GetImages(questions):
     API_key = '90dGU9XIi9x7RkSKXUGzP1XNOkPgptIC2icAlDeLc90'
     endpoint = 'https://api.unsplash.com/search/photos'
