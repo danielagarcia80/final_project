@@ -3,22 +3,27 @@
 {% block title %}Register - Quiz Application{% endblock %}
 
 {% block content %}
+    <!-- Register page title -->
     <h1 class="my-4">Register</h1>
     <form method="post">
+        <!-- Create a place for user to input a new username -->
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" class="form-control" id="username" name="username" required>
         </div>
+        <!-- Create a place for user to input a new password -->
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
+    <!-- Error messages if user already has an account -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="alert alert-danger mt-3">{{ messages[0] }}</div>
         {% endif %}
     {% endwith %}
+    <!-- The Login link -->
     <p class="mt-3">Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
 {% endblock %}

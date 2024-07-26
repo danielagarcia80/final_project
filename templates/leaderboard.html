@@ -3,11 +3,13 @@
 {% block title %}Leaderboard - Quiz Application{% endblock %}
 
 {% block content %}
+    <!-- Gets the username and the score of each user and puts it onto the leaderboard -->
     <h1 class="my-4">Leaderboard</h1>
     <ul class="list-group">
         {% for username, score in scores %}
             <li class="list-group-item">{{ username }}: {{ score }}</li>
         {% endfor %}
     </ul>
+    <!-- Link back to the other quizzes -->
     <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Quizzes</a>
 {% endblock %}

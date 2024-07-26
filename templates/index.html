@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1 class="title">Interactive Quiz Application</h1>
+<!-- These are links to each quiz with their image above the link with their title -->
 <div class = "card_container">
     <h2>Select a Quiz</h2>
     <div class="row">
@@ -90,7 +91,6 @@
         </div>
         </a>
     </div>
-
     <div class="row">
         <a class = "card_link" href="{{ url_for('quiz', quiz_title=quiz_data[8]) }}">
         <div class="card" style="width: 15rem;">
@@ -113,6 +113,7 @@
             </div>
             </a><br>
     </div>
+    <!-- The links for the leaderbaord and to get a random quiz -->
     <a href="{{ url_for('leaderboard') }}" class="btn btn-info mt-4">View Leaderboard</a>
     <a href="{{ url_for('leaderboard') }}" class="btn btn-info mt-4">Get a Random Quiz</a>
 </div>

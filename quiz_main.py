@@ -12,13 +12,14 @@ Bootstrap4(app)
 # User data storage in memory
 users = {}
 
+# The mage page showing the quizzes to choose from
 @app.route('/', methods=['GET'])
 def index():
     categories = ("Music", "Sports and Leisure", "Film and TV", "Arts and Literature", "History",
                   "Society and Culture", "Science", "Geography", "Food and Drink", "General Knowledge")
     return render_template('index.html', quiz_data = categories)
 
-
+# The Quiz format page when the user clicks on a quiz
 @app.route('/quiz/<quiz_title>', methods=['GET'])
 def quiz(quiz_title):
     if 'username' not in session:
@@ -38,6 +39,7 @@ def quiz(quiz_title):
         finished_questions = final_questions + finished_questions
     return render_template('quiz.html', quiz=finished_questions)
 
+# The results page once a quiz is complete
 @app.route('/results', methods=['POST'])
 def results():
     quiz_category = request.form.get('category')
@@ -57,6 +59,7 @@ def results():
     correct_total = 0
     total_questions = len(question_ids)
 
+    # Add up all the correct answers
     for question_id, correct_answer in zip(question_ids, answers):
         selected_answer = request.form.get(f'question_{question_id}')
         print(selected_answer)
@@ -64,6 +67,7 @@ def results():
         if selected_answer == correct_answer:
             correct_total += 1
     
+    # Ask the user to log in if they aren't already
     username = session['username']
     if username in users:
         users[username]['scores'].append(correct_total)
@@ -73,7 +77,7 @@ def results():
     
     return render_template('result.html', total_questions=total_questions, correct_answers=correct_total)
 
-
+# The login page where it prompts user for their username and password
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -85,11 +89,13 @@ def login():
         flash('Invalid username or password')
     return render_template('login.html')
 
+# The logout page to logout
 @app.route('/logout')
 def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
 
+# The register page if the user doesn't have a login yet
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -103,6 +109,7 @@ def register():
         return redirect(url_for('index'))
     return render_template('register.html')
 
+# The leaderboard page to see all the users scores
 @app.route('/leaderboard')
 def leaderboard():
     unique_scores = {}
@@ -112,14 +119,13 @@ def leaderboard():
     sorted_scores = sorted(unique_scores.items(), key=lambda x: x[1], reverse=True)[:5]
     return render_template('leaderboard.html', scores=sorted_scores)
 
-
 # Load quizzes from JSON
 def load_json():    
     with open('quizzes.json') as f:
         quizzes = json.load(f)['quizzes']
     return quizzes
 
-# gets questions from trivia api
+# Gets questions from trivia api
 def get_data(search_term, limit):
     ApiKeyAuth = 'ApiKeyAuth'
     url = 'https://the-trivia-api.com/v2/questions'
@@ -139,7 +145,7 @@ def get_data(search_term, limit):
     except:
         print('please try again')
 
-# returns correct answers from API to results route.
+# Returns correct answers from API to results route.
 def get_answers(id):
     ApiKeyAuth = 'ApiKeyAuth'
     url = f'https://the-trivia-api.com/v2/question/{id}'
@@ -154,7 +160,7 @@ def get_answers(id):
     except:
         print('please try again')
 
-# gets images for questions if available. Only 50 requests an hour.
+# Gets images for questions if available. Only 50 requests an hour.
 def GetImages(questions):
     API_key = '90dGU9XIi9x7RkSKXUGzP1XNOkPgptIC2icAlDeLc90'
     endpoint = 'https://api.unsplash.com/search/photos'

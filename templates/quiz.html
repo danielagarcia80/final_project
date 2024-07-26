@@ -8,6 +8,7 @@
         <h2>{{ quiz[0].category }} Quiz</h2>
         {% for question in quiz %}
             <div class="question_cont">
+                <!-- If the question has an image then post it -->
                 {% if question.image %}
                     {% if 'http' in question.image %}
                         <img src="{{ question.image }}" width="250" class="quiz_img" alt="Question Image">
@@ -15,12 +16,15 @@
                         <img src="{{ url_for('static', filename='images/' + question.image) }}" width="250" class="quiz_img" alt="Question Image">
                     {% endif %}
                 {% endif %}
+                <!-- Get the questions from the API -->
                 <input type="hidden" name="question_ids" value="{{ question.id }}">
                 <div class="text_cont">
                     <p>{{ question.question.text }}</p>
+                    <!-- Get the correct and incorrect choices from the API -->
                     {% set options = [question.correctAnswer] + question.incorrectAnswers %}
                     {% for option in options %}
                         <label>
+                            <!-- Create a radio button for the options -->
                             <div class="radio">
                                 <input class="form-check-input" type="radio" name="question_{{ question['id'] }}" value="{{ option }}">
                                 {{ option }}
@@ -34,6 +38,7 @@
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <!-- Back to the other quizzes link -->
     <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Back to Quizzes</a>
     <br><br>
 {% endblock %}
