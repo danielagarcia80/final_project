@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_bootstrap import Bootstrap4
 from werkzeug.security import generate_password_hash, check_password_hash
-import requests, random, json, pprint
+import requests, random, json
 
 app = Flask(__name__)
 app.secret_key = 'cst205final'  # Required to use sessions securely
@@ -27,16 +27,16 @@ def quiz(quiz_title):
     final_questions = {}
     quizzes_file = load_json()
     if quiz_title in quizzes_file:
-        questions = quizzes_file[quiz_title]
+        questions = quizzes_file[quiz_title] # if questions with matching category exist in quizzes.json
         if len(questions) >= 2:
-            final_questions = random.sample(questions, 2)
+            final_questions = random.sample(questions, 2) # takes up to two random questions from category
         else:
             final_questions = questions
     count = 10 - len(final_questions)
-    remaining_questions = get_data(quiz_title, count)
-    finished_questions = GetImages(remaining_questions)
+    remaining_questions = get_data(quiz_title, count) # Gets remaining questions from API function. Max 10 questions
+    finished_questions = GetImages(remaining_questions) # Searches for images in unsplash API that matches correct answer 
     if final_questions:
-        finished_questions = final_questions + finished_questions
+        finished_questions = final_questions + finished_questions # combines questions from API's and quizzes.json file
     return render_template('quiz.html', quiz=finished_questions)
 
 # The results page once a quiz is complete
@@ -46,15 +46,15 @@ def results():
     quizzes_file = load_json()
     question_ids = request.form.getlist('question_ids')
     answers = []
-    if quiz_category in quizzes_file:
-        selected_category = quizzes_file[quiz_category]
+    if quiz_category in quizzes_file: # checks quizzes.json if categorys match
+        selected_category = quizzes_file[quiz_category] 
         for question in selected_category:
-            if question['id'] in question_ids:
+            if question['id'] in question_ids: # Searches for quiz answer based on ids passed from quiz.html form
                 answers.append(question['correctAnswer'])
         print(question)
-    for id in question_ids:
+    for id in question_ids: # Compares the length of the ids. API has a larger length
         if len(id) > 12:
-            answers.append(get_answers(id))
+            answers.append(get_answers(id)) # funtion that returns answers from API by looking up id
 
     correct_total = 0
     total_questions = len(question_ids)
@@ -143,7 +143,7 @@ def get_data(search_term, limit):
         data = r.json()
         return data
     except:
-        print('please try again')
+        print('please try again- No question')
 
 # Returns correct answers from API to results route.
 def get_answers(id):
@@ -158,7 +158,7 @@ def get_answers(id):
         print(data)
         return data['correctAnswer']
     except:
-        print('please try again')
+        print('please try again- No answer')
 
 # Gets images for questions if available. Only 50 requests an hour.
 def GetImages(questions):
@@ -183,8 +183,8 @@ def GetImages(questions):
                 question['image'] = image_url
             else:
                 question['image'] = None 
-        except requests.exceptions.RequestException as e:
-            print(f"Error fetching image for {search_term}: {e}")
+        except: 
+            print('please try again- No image')
             question['image'] = None
     return questions
 

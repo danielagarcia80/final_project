@@ -12,15 +12,16 @@
                 {% if question.image %}
                     {% if 'http' in question.image %}
                         <img src="{{ question.image }}" width="250" class="quiz_img" alt="Question Image">
-                    {% else %}
+                     {% else %}
+                     <!-- Checks format to distinguish where to get the image from -->
                         <img src="{{ url_for('static', filename='images/' + question.image) }}" width="250" class="quiz_img" alt="Question Image">
                     {% endif %}
                 {% endif %}
-                <!-- Get the questions from the API -->
+                <!-- passes the question id to rsults.html as hidden -->
                 <input type="hidden" name="question_ids" value="{{ question.id }}">
                 <div class="text_cont">
                     <p>{{ question.question.text }}</p>
-                    <!-- Get the correct and incorrect choices from the API -->
+                    <!-- Combines options for radio buttons -->
                     {% set options = [question.correctAnswer] + question.incorrectAnswers %}
                     {% for option in options %}
                         <label>
