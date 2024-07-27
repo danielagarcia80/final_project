@@ -1,3 +1,17 @@
+# Date: 7/26/24
+# Class: CST205 Summer 2024
+# Team: 478
+# Authors: Daniela Garcia, Jacob Bello, Carson Mehl, Shane Skare
+# Abstract: This Flask-based quiz app pulls questions from a local JSON file and a trivia API, and it 
+#    enhances questions with images from the Unsplash API. Users select from categories like Music, Sports, and Film.
+#    The app combines questions from local storage and the API for each quiz, supporting features like 
+#    user registration, login, and score tracking.
+
+# How to run the program:
+# This is a Flask application, so in your Python command line virtual environment, the command is
+# flask --app quiz_main --debug run
+# Copy and paste the URL that's given to a browser and click on a quiz of your choice to begin.
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_bootstrap import Bootstrap4
 from werkzeug.security import generate_password_hash, check_password_hash
